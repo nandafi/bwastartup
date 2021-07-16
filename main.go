@@ -22,13 +22,15 @@ func main() {
 	//Inisialisasi repositori
 	userRepository := user.NewRepository(db)
 	userService := user.NewService(userRepository)
+
 	//register
 	userHandler := handler.NewUserHandler(userService)
 	router := gin.Default()
 	api := router.Group("api/v1")
-	api.POST("/users", userHandler.RegisterUser)
-	api.POST("/sessions", userHandler.Login)
-	api.POST("/email_checkers", userHandler.CheckEmailAvailability)
+	api.POST("/users", userHandler.RegisterUser)                    //register
+	api.POST("/sessions", userHandler.Login)                        //login
+	api.POST("/email_checkers", userHandler.CheckEmailAvailability) //check email available apa nggk
+	api.POST("/avatars", userHandler.UploadAvatar)                  //upload avatar
 
 	router.Run()
 
