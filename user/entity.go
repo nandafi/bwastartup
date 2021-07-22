@@ -1,5 +1,7 @@
 package user
 
+//untuk mewakili tabel yang ada dalam database
+
 import "time"
 
 type User struct {
